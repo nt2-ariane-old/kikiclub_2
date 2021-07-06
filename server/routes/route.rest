@@ -1,0 +1,54 @@
+GET http://doutreguay.com:3005/events
+###
+DELETE  http://doutreguay.com:3005/users/5e84adb0c726a0244bdf5d6a
+
+###
+GET http://doutreguay.com:3005/events/5e7bda9026c93009b943fd75
+###
+GET http://doutreguay.com:3005/individus
+###
+POST http://localhost:3020/api/login
+Content-Type: application/json
+
+{
+  "email":"ludovic@labo-nt2.org",
+  "lastname": "Doutre-Guay",
+  "firstname":"Ludovic"
+}
+###
+POST http://doutreguay.com:3005/slack/message
+###
+POST http://doutreguay.com:3005/events
+Content-Type: application/json
+
+{
+  "name": "Infos"
+}
+###
+POST http://doutreguay.com:3005/user/signup
+Content-Type: application/json
+
+{
+  "email": "ludovic@labo-nt2.org",
+  "password": "Attenpo23",
+}
+###
+POST http://doutreguay.com:3005/user/login
+Content-Type: application/json
+
+{
+  "email": "ludovic@labo-nt2.org",
+  "password": "Attenpo23"
+}
+
+###
+DELETE http://doutreguay.com:3005/events/5e7bda9026c93009b943fd75
+
+###
+
+PATCH http://doutreguay.com:3005/events/5e7bda9026c93009b943fd75
+Content-Type: application/json 
+
+{
+  "name": "Tommy"
+}

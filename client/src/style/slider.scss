@@ -1,0 +1,25 @@
+.slider {
+  .slides {
+    width: 300px;
+    height: 300px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-behavior: smooth;
+
+    & > div {
+      scroll-snap-align: start;
+    }
+    .slide {
+      width: 300px;
+      flex-shrink: 0;
+      height: 100%;
+      &:target {
+        transform: scale(0.8);
+      }
+    }
+  }
+}

@@ -1,0 +1,1024 @@
+:root {
+  --kikicode: #d8df23;
+  --text01: #000000;
+  --base01: #ffffff;
+  --minHeight: calc(100vh - 260px);
+  --headerHeight: 100px;
+  --footerHeight: 160px;
+}
+
+@font-face {
+  font-family: Calling Code;
+  src: url("../fonts/Flat-it - Calling Code Regular.otf");
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade {
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Calling Code;
+  color: var(--text01);
+}
+
+button {
+  cursor: pointer;
+}
+
+.kikicode-color {
+  color: var(--kikicode);
+}
+
+.kikicode-btn {
+  display: block;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: var(--kikicode);
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
+}
+
+.kikicode-btn:hover {
+  opacity: 0.8;
+}
+
+.workshop {
+  position: relative;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 100%;
+  -webkit-transition: width 500ms linear, height 500ms linear;
+  transition: width 500ms linear, height 500ms linear;
+}
+
+.workshop .media {
+  height: 200px;
+}
+
+.workshop .title {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 300;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal .close_modal {
+  background-color: transparent;
+  border: transparent;
+  outline: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.modal .close_modal svg,
+.modal .close_modal path {
+  color: inherit;
+}
+
+.modal .inner_modal {
+  width: 800px;
+  max-width: 100%;
+  height: 400px;
+  max-height: 100%;
+  position: relative;
+  -webkit-box-shadow: 0 0 3px 3px #b5b5b5;
+          box-shadow: 0 0 3px 3px #b5b5b5;
+  background-color: #f5f5f5;
+  overflow: scroll;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.fluid-react-col {
+  padding: 1rem;
+}
+
+.box-btn {
+  width: 300px;
+  font-size: 1.1rem;
+  color: white;
+  border: 5px solid white;
+  background-color: transparent;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  outline: none;
+}
+
+.box-btn:hover {
+  border: none;
+  padding: calc(0.5rem + 5px);
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.App-header {
+  background-color: var(--base01);
+  position: -webkit-sticky;
+  position: sticky;
+  height: var(--headerHeight);
+  z-index: 5;
+}
+
+.App-header a {
+  text-decoration: none;
+}
+
+.App-header h1 {
+  font-size: 80px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.App-header .user-infos {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: var(--headerHeight);
+  padding: 0 1rem;
+  vertical-align: middle;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.App-header .navbar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.App-header .navbar .navbar-toggle {
+  font-size: 35px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  cursor: pointer;
+}
+
+.App-header .navbar .navbar-menu {
+  background-color: var(--base01);
+  list-style-type: none;
+  position: absolute;
+  top: 60px;
+  width: 300px;
+  overflow: hidden;
+  max-height: 0px;
+  -webkit-transition: max-height 1s;
+  transition: max-height 1s;
+}
+
+.App-header .navbar .navbar-menu li {
+  padding: 1rem 2rem;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.App-header .navbar .navbar-menu.open {
+  height: auto;
+  max-height: 100vh;
+}
+
+.App-body {
+  background-color: #e9ebee;
+  position: -webkit-sticky;
+  position: sticky;
+  min-height: var(--minHeight);
+}
+
+.App-body .home {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  height: auto;
+  height: var(--minHeight);
+}
+
+.App-body .home .bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+}
+
+.App-body .home .info {
+  z-index: 2;
+  width: 100%;
+  max-width: 640px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.6);
+  right: 50%;
+  padding: 3rem;
+  text-align: center;
+}
+
+.App-body .home .info p {
+  font-size: 1.25rem;
+}
+
+.App-body .home .info h2,
+.App-body .home .info p,
+.App-body .home .info a {
+  margin: 1rem auto;
+}
+
+.App-body .members {
+  position: relative;
+  background-color: black;
+  min-height: var(--minHeight);
+}
+
+.App-body .members .members-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+}
+
+.App-body .members .profil {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  text-align: center;
+  position: relative;
+}
+
+.App-body .members .profil .profil-notification {
+  width: 35px;
+  height: 0;
+  position: absolute;
+  padding-top: 35px;
+  background-color: #d30a57;
+  border-radius: 100%;
+  top: 30px;
+  right: calc(50% - (180px / 2) + (35px / 2));
+}
+
+.App-body .members .profil .profil-notification .notif-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  line-height: 35px;
+  font-size: 1.2rem;
+}
+
+.App-body .members .profil .profil-name {
+  color: white;
+  font-size: 30px;
+}
+
+.App-body .members .profil .profil-avatar,
+.App-body .members .profil .profil-tool {
+  display: block;
+  border-radius: 100%;
+  width: 180px;
+  height: 180px;
+  margin: 30px auto;
+  background-color: var(--kikicode);
+  -webkit-box-shadow: 0 0 10px 5px #adb30f, 0 0 20px 10px #21503d, 0 0 25px 15px #333232;
+          box-shadow: 0 0 10px 5px #adb30f, 0 0 20px 10px #21503d, 0 0 25px 15px #333232;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  font-size: 130px;
+  line-height: 180px;
+}
+
+.App-body .members .profil .profil-avatar:hover,
+.App-body .members .profil .profil-tool:hover {
+  border: none;
+  background-color: #f2f3c0;
+  -webkit-box-shadow: 0 0 10px 5px #f2f3c0, 0 0 20px 10px #5af7bb, 0 0 25px 15px #3ae248;
+  box-shadow: 0 0 10px 5px #f2f3c0, 0 0 20px 10px #5af7bb, 0 0 25px 15px #3ae248;
+}
+
+.App-body .members .profil .profil-tool {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 90px);
+  margin: 30px auto;
+  opacity: 0.7;
+}
+
+.App-body .members .profil .profil-ateliers,
+.App-body .members .profil .profil-pts {
+  font-size: 16px;
+  margin: 2px 10px 0 5px;
+  text-indent: 15px;
+  color: #68b04d;
+  text-align: center;
+}
+
+.App-body .workshops {
+  background-color: white;
+  min-height: var(--minHeight);
+  position: relative;
+  height: auto;
+}
+
+.App-body .workshops .workshops-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.App-body .workshops .workshops-active-filter {
+  display: none;
+}
+
+.App-body .workshops .workshops-active-filter {
+  display: none;
+}
+
+.App-body .workshops .workshops-header {
+  text-align: center;
+}
+
+.App-body .workshops .workshops-header h2 {
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.App-body .workshops .workshops-header .kikicode-btn {
+  padding: 1rem;
+  line-height: inherit;
+  margin: 1em auto;
+  font-size: 1.2rem;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  text-decoration: none;
+}
+
+.App-body .workshops .workshops-content {
+  max-width: 75vw;
+}
+
+.App-body .workshops .workshops-content .col-md-3 {
+  padding: 1rem;
+}
+
+.App-body .workshops .workshops-content .pages-index {
+  text-align: center;
+}
+
+.App-body .workshops .workshops-content .pages-index button {
+  display: inline-block;
+  border: 1px solid grey;
+  color: gray;
+  width: calc(18px + 1em);
+  font-size: 18px;
+  line-height: 1;
+  height: calc(18px + 1em);
+  background-color: transparent;
+  border-radius: 100%;
+  padding: 0.5em;
+  margin: 3px;
+  outline: none;
+}
+
+.App-body .workshops .workshops-nav {
+  min-height: calc(var(--minHeight) - 50px - 35px - 2em);
+  max-width: 25vw;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter {
+  width: 200px;
+  max-width: 100%;
+  margin: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter #delete_filters {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter h2 {
+  font-size: 1.75rem;
+  padding: 0.5rem 0;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid black;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter button {
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 1.2rem;
+  position: relative;
+  outline: none;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter button span {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter .filters-list {
+  list-style-type: none;
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: max-height 1s;
+  transition: max-height 1s;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter .filters-list.open {
+  max-height: 100vh;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter li {
+  padding: 0.5rem;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter li input[type="checkbox"] {
+  visibility: hidden;
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter li input[type="checkbox"]:checked ~ .checkmark {
+  height: 16px;
+  width: 16px;
+  border: 1px solid grey;
+  display: inline-block;
+  position: relative;
+  margin: 0 8px;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter li input[type="checkbox"]:checked ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  display: block;
+}
+
+.App-body .workshops .workshops-nav .workshops-filter .filter li .checkmark {
+  height: 16px;
+  width: 16px;
+  border: 1px solid grey;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.App-body .profil-infos {
+  background-color: white;
+  min-height: var(--minHeight);
+}
+
+.App-body .profil-infos h2,
+.App-body .profil-infos h3 {
+  text-align: center;
+  padding: 1rem;
+}
+
+.App-body .robots {
+  background-color: white;
+  min-height: var(--minHeight);
+  height: auto;
+  overflow: hidden;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.App-body .robots .react-multi-carousel-list {
+  margin: 2rem;
+}
+
+.App-body .robots .robot {
+  border: 1px solid black;
+  height: 0;
+  width: 80%;
+  padding-top: 80%;
+  /* 1:1 Aspect Ratio */
+  position: relative;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.App-body .robots .robot img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.robot-infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.robot-infos > div {
+  width: 50%;
+}
+
+.robot-infos img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.robot-infos .robot-desc {
+  padding: 1rem;
+  overflow: auto;
+}
+
+.robot-infos .robot-desc .robot-filters {
+  padding: 0.6rem 0;
+}
+
+.login {
+  background-color: white;
+  min-height: var(--minHeight);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.login form {
+  max-width: 350px;
+  width: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.login form label {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.login form label input {
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: solid 1px #e1e1e1;
+  font-size: 18px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.login form button {
+  outline: none;
+  background-color: transparent;
+  color: black;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 0.5rem;
+  margin: 1rem auto;
+}
+
+.login form button:hover {
+  border: none;
+  padding: calc(0.5rem + 1px);
+}
+
+.App-footer {
+  background-color: var(--base01);
+  height: 160px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: center;
+  line-height: 160px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App-footer .logo {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.App-footer .logo img {
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.App-footer .logo svg {
+  font-size: 80px;
+  vertical-align: middle;
+}
+
+.App-footer .logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.App-footer .logo a:hover {
+  color: var(--kikicode);
+}
+
+.workshop-infos {
+  height: 100%;
+  overflow: hidden;
+}
+
+.workshop-infos h2 {
+  width: 100%;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 40px;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.workshop-infos .workshop-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  margin: 1rem;
+  height: calc(100% - 82px - 4rem);
+}
+
+.workshop-infos .workshop-body .infos {
+  width: 50%;
+}
+
+.workshop-infos .workshop-body .workshop-filters > div {
+  padding: 4px 0;
+}
+
+.workshop-infos .workshop-body .workshop-filters > div .label {
+  display: inline-block;
+  width: 50%;
+  padding: 0;
+  margin: 0;
+}
+
+.workshop-infos .workshop-body .workshop-description {
+  padding: 1rem 0;
+  overflow: auto;
+}
+
+.workshop-infos .workshop-body .workshop-image {
+  padding: 0 1rem;
+  width: 50%;
+  height: 100%;
+}
+
+.workshop-infos .workshop-body .workshop-image img {
+  width: 100%;
+  height: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#sort_select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#sort_select select {
+  border: 1px solid black;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 185px;
+  height: 30px;
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .App-header h1 {
+    font-size: 50px;
+  }
+  .App-header .user-infos {
+    bottom: 0;
+    line-height: inherit;
+    height: auto;
+    top: auto;
+  }
+  .App-header .navbar .navbar-toggle {
+    left: 10px;
+  }
+  .App-header .navbar .navbar-menu {
+    top: 100px;
+    left: 0;
+    width: 100vw;
+  }
+  .App-body .home .info h2 {
+    font-size: 1.3rem;
+  }
+  .App-body .home .info p {
+    font-size: 1rem;
+  }
+  .App-body .home .info .kikicode-btn {
+    font-size: 1rem;
+  }
+  .App-body .members {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .App-body .members .members-footer {
+    top: 0;
+    bottom: auto;
+  }
+  .App-body .workshops {
+    position: relative;
+  }
+  .App-body .workshops .workshops-active-filter {
+    display: block;
+    font-size: 1.2rem;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border: none;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+  .App-body .workshops .workshops-active-filter.x-btn {
+    top: 2rem;
+    right: 2rem;
+  }
+  .App-body .workshops .workshops-nav {
+    position: fixed;
+    top: 100px;
+    height: calc(100vh - 100px);
+    max-height: 100vh;
+    max-width: 100%;
+    width: 0px;
+    background-color: white;
+    overflow: auto;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+  }
+  .App-body .workshops .workshops-nav.active {
+    width: 100%;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter {
+    width: 80%;
+    padding: 1rem;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter .workshops-filter-body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter .workshops-filter-body .filter {
+    overflow: hidden;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter .workshops-filter-body .filter button {
+    width: 100%;
+    padding-right: 2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .App-body .robots .robot {
+    width: 90%;
+    padding-top: 90%;
+    margin-bottom: 1rem;
+  }
+  .App-footer {
+    line-height: inherit;
+    position: static;
+  }
+  .App-footer .logo {
+    width: 100%;
+    height: auto;
+  }
+  .App-footer .logo img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .App-header .navbar .navbar-menu {
+    top: 100px;
+  }
+  .App-header .user-infos {
+    top: auto;
+    bottom: 0;
+    height: auto;
+    line-height: inherit;
+  }
+  .App-body .home .info {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .App-body .workshops .workshops-nav {
+    min-height: auto;
+    max-width: 100%;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter {
+    width: calc(100% - 4rem);
+    margin: 2rem;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter .workshops-filter-body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter .workshops-filter-body .filter {
+    overflow: hidden;
+  }
+  .App-body .workshops .workshops-nav .workshops-filter .workshops-filter-body .filter button {
+    width: 100%;
+    padding-right: 2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .App-body .robots .robot {
+    width: 90%;
+    padding-top: 90%;
+  }
+}
+/*# sourceMappingURL=index.css.map */
